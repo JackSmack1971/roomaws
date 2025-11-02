@@ -1,0 +1,30 @@
+{
+  "approved_patterns": {
+    "ui_components": "^(components/|ui/|pages/).*\\.(jsx|tsx|css)$",
+    "test_files": "^(__tests__/|\\.test\\.(ts|js))$",
+    "migration_scripts": "^(scripts/(migrations|codemods)/).*$"
+  },
+  "forbidden_patterns": {
+    "auth_files": ".*(auth|authentication|credentials)/.*",
+    "payment_files": ".*(payment|billing|checkout)/.*",
+    "security_files": ".*(security|secrets)/.*",
+    "admin_files": ".*(admin|superuser)/.*"
+  },
+  "mode_security_rules": {
+    "issue-resolver": {
+      "must_exclude": ["auth/", "payment/", "security/", "admin/"],
+      "enforcement": "fail_on_match",
+      "description": "Issue resolver cannot modify critical infrastructure"
+    },
+    "migration-specialist": {
+      "allowed_config_paths": ["migration-config.", "flyway.conf", "liquibase.properties"],
+      "enforcement": "allowlist_only"
+    }
+  },
+  "structural_requirements": {
+    "single_edit_tuple": {
+      "enforced": true,
+      "description": "Each mode must have exactly ONE edit tuple to avoid parser bugs"
+    }
+  }
+}

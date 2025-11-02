@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/roomodes.prescriptive.schema.json",
+  "title": "Roo Code .roomodes Prescriptive Schema",
+  "description": "Enforces best practices and standardizes field usage across modes. Prohibits customInstructions in YAML - all detailed instructions must be in .roo/rules-[slug]/ files.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "customModes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "description": "Mode slug: lowercase letters, numbers, and hyphens only. Must start with letter.",
+            "not": {
+              "pattern": "\\t"
+            }
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^[^\\t]*$",
+            "description": "Display name with emoji prefix (e.g., '💻 Code')",
+            "not": {
+              "pattern": "\\t"
+            }
+          },
+          "roleDefinition": {
+            "type": "string",
+            "description": "Role definition describing the mode's purpose and expertise",
+            "not": {
+              "pattern": "\\t"
+            }
+          },
+          "whenToUse": {
+            "type": "string",
+            "description": "Clear guidance on when to use this mode",
+            "not": {
+              "pattern": "\\t"
+            }
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional brief description",
+            "not": {
+              "pattern": "\\t"
+            }
+          },
+          "customInstructions": {
+            "type": "string",
+            "description": "Ultra-concise orientation (1-3 sentences) providing immediate context during mode switches",
+            "not": {
+              "pattern": "\\t"
+            }
+          },
+          "source": {
+            "type": "string",
+            "description": "Optional source attribution",
+            "not": {
+              "pattern": "\\t"
+            }
+          },
+          "groups": {
+            "type": "array",
+            "description": "Tool groups and restrictions",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": ["read", "edit", "command", "browser", "mcp"],
+                  "description": "Allowed tool group"
+                },
+                {
+                  "type": "array",
+                  "description": "Edit restrictions with file patterns",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": ["edit"],
+                        "description": "Edit group marker"
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "fileRegex": {
+                            "type": "string",
+                            "description": "Valid regex pattern for file restrictions",
+                            "not": {
+                              "pattern": "\\t"
+                            }
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Description of what files this pattern covers",
+                            "not": {
+                              "pattern": "\\t"
+                            }
+                          }
+                        },
+                        "required": ["fileRegex", "description"]
+                      }
+                    ]
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              ]
+            }
+          }
+        },
+        "required": ["slug", "name", "roleDefinition", "whenToUse", "groups"]
+      }
+    }
+  },
+  "required": ["customModes"]
+}

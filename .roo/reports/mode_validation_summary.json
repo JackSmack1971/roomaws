@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-11-01T15:23:10.159420Z",
+  "project_root": "C:\\Users\\click\\OneDrive\\Desktop\\Roo-Code-3.29.4",
+  "target": "C:\\Users\\click\\OneDrive\\Desktop\\Roo-Code-3.29.4\\.roomodes",
+  "tools": {
+    "yamllint": {
+      "available": true,
+      "returncode": 0
+    },
+    "spectral": {
+      "available": false
+    }
+  },
+  "summary": {
+    "status": "pass",
+    "yamllint_errors": 0,
+    "yamllint_warnings": 0,
+    "spectral_issues": 0,
+    "schema_valid": true
+  },
+  "details": {
+    "yamllint": [
+      {
+        "level": "info",
+        "message": "âˆš YAML Lint successful.",
+        "raw": "âˆš YAML Lint successful.",
+        "rule": null
+      }
+    ],
+    "spectral": [],
+    "schema": {
+      "ok": true,
+      "errors": []
+    }
+  }
+}

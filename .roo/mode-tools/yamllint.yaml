@@ -1,0 +1,34 @@
+extends: default
+
+rules:
+  indentation:
+    spaces: 2
+    indent-sequences: consistent
+    check-multi-line-strings: true
+  document-start: disable
+  line-length:
+    max: 120
+    allow-non-breakable-words: true
+  trailing-spaces: enable
+  empty-lines: enable
+  comments:
+    require-starting-space: true
+    min-spaces-from-content: 1
+  new-lines:
+    type: unix
+  truthy:
+    level: warning
+  key-ordering: enable
+  braces: enable
+  brackets: enable
+  colons: enable
+  commas: enable
+  hyphens: enable
+  empty-values: enable
+  octal-values: enable
+  quoted-strings:
+    required: false
+    extra-required: []
+  # Strictly forbid tabs anywhere
+  tabs:
+    level: error

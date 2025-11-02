@@ -1,0 +1,31 @@
+extends: []
+formats: [yml, yaml]
+
+rules:
+  no-tabs:
+    description: Tabs are forbidden.
+    given: "$..*"
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "\\t"
+  require-top-keys:
+    description: Require the same top-level keys as the reference .roomodes.
+    given: "$"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required: ["customModes"]
+  disallow-additional-top-keys:
+    description: No extra top-level keys allowed.
+    given: "$"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          additionalProperties: false
+          properties: {"customModes": {}}

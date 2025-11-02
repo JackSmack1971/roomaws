@@ -1,0 +1,8 @@
+{
+  "receiver_slug": "mode-writer",
+  "handoff_type": "mode_validation_result",
+  "summary_json": ".roo\\reports\\mode_validation_summary.json",
+  "summary_md": ".roo\\reports\\mode_validation_summary.md",
+  "status": "pass",
+  "timestamp": "2025-11-01T15:23:10.159420Z"
+}
