@@ -1,4 +1,3 @@
-````markdown
 # ROOMAWS — Roo Orchestrated Operations: Multi-Agent Workflow System
 
 **Version 1 (Beta)**  
@@ -279,3 +278,4 @@ Not specified. Add a license to clarify usage.
 
 ```
 ```
+
